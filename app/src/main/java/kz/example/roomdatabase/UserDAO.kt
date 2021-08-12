@@ -21,5 +21,5 @@ abstract class UserDAO {
     abstract fun getAllUsers(): List<User>
 
     @Query("SELECT * FROM $USER_TABLE_NAME WHERE id = :id")
-    abstract fun getUser(id: Int)
+    abstract fun getUser(id: Int): User
 }

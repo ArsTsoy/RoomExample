@@ -9,7 +9,7 @@ const val USER_TABLE_NAME = "USER"
 @Entity(tableName = USER_TABLE_NAME)
 class User(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    var id: Int? = null,
 
     @ColumnInfo(name = "user_name")
     var name: String,
