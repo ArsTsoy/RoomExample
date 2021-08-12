@@ -13,7 +13,7 @@ class CreateUserViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return CreateUserViewModel(
-            app, userDAO
+            app
         ) as T
     }
 }
