@@ -17,4 +17,8 @@ class DBModule(
     fun providesDB(): MyDatabase {
         return MyDatabase.getInstance(app)
     }
+
+    @Provides
+    @Singleton
+    fun provideApplication(): Application = app
 }

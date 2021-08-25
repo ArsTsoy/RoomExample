@@ -1,8 +1,9 @@
 package kz.example.roomdatabase.di
 
+import android.app.Application
 import dagger.Component
 import kz.example.roomdatabase.MyDatabase
-import kz.example.roomdatabase.create_user.CreateUserViewModel
+import kz.example.roomdatabase.user_detail.UserDetailFragment
 import javax.inject.Singleton
 
 
@@ -12,11 +13,9 @@ interface ComponentDi {
 
     // 1 - ый способ
     fun getDB(): MyDatabase
+    fun getApp(): Application
 
-//
-//
-//    //2 - ой способ
-    fun inject(createUserViewModel: CreateUserViewModel)
-
+    fun provideIn(userDetailFragment: UserDetailFragment)
+//    fun getCreateUserVMFactory(): CreateUserViewModelFactory
 
 }

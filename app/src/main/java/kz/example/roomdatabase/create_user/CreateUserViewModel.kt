@@ -7,24 +7,14 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kz.example.roomdatabase.App
 import kz.example.roomdatabase.MyDatabase
 import kz.example.roomdatabase.model.User
-import javax.inject.Inject
 
 
 class CreateUserViewModel(
-    app: Application
+    app: Application,
+    private val db: MyDatabase
 ): AndroidViewModel(app) {
-
-    init{
-        (app as App).componentDI.inject(this)
-    }
-
-    //region DI
-    @Inject
-    internal lateinit var db: MyDatabase
-    //endregion
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -45,7 +35,6 @@ class CreateUserViewModel(
             )
 
         compositeDisposable.add(completableCreateUser)
-
     }
 
 
