@@ -2,14 +2,14 @@ package kz.example.roomdatabase
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kz.example.roomdatabase.user_detail.UserDetailFragment
+import kz.example.roomdatabase.list_user.UserListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragment = UserDetailFragment()
+        val fragment = UserListFragment()
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.flContainer, fragment)
