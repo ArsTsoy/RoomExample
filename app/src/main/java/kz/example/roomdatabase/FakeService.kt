@@ -13,10 +13,12 @@ class FakeService @Inject constructor(
     suspend fun getUsers(): Flow<User> {
         return flow {
             val users = db.getUserDao().getAllUsers()
+            throw Exception("Fake Exception")
             for (user in users) {
                 kotlinx.coroutines.delay(3_000)
                 emit(user)
             }
+
 
         }
     }

@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
 
         val fragment = UserListFragment()
 
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager
+            .beginTransaction()
             .replace(R.id.flContainer, fragment)
             .commit()
 
