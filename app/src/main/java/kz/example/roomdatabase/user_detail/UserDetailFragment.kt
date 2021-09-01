@@ -1,6 +1,5 @@
 package kz.example.roomdatabase.user_detail
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,21 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import kz.example.roomdatabase.App
 import kz.example.roomdatabase.R
-import javax.inject.Inject
 
 
 class UserDetailFragment: Fragment(R.layout.fragment_create_user) {
 
-    @Inject
-    internal lateinit var factoryOfViewModel: UserDetailViewModel.UserDetailViewModelFactory.Factory
-
-    override fun onAttach(context: Context) {
-        (requireActivity() as App).componentDI.provideIn(this)
-        super.onAttach(context)
-    }
-
     private val viewModel: UserDetailViewModel by viewModels {
-        factoryOfViewModel.create(123)
+        (requireActivity().application as App).componentDI.getAssistedFactory().create(123)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

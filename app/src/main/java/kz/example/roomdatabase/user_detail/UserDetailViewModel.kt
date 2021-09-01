@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import kz.example.roomdatabase.MyDatabase
+import javax.inject.Inject
 
 
 class UserDetailViewModel(
@@ -25,9 +23,9 @@ class UserDetailViewModel(
     }
 
 
-    class UserDetailViewModelFactory @AssistedInject constructor(
+    class UserDetailViewModelFactory(
         private val db: MyDatabase,
-        @Assisted("userId") private val userId: Int
+        private val userId: Int
     ) : ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -35,12 +33,13 @@ class UserDetailViewModel(
                 db, userId
             ) as T
         }
+    }
 
-        @AssistedFactory
-        interface Factory {
-            fun create(@Assisted("userId") userId: Int): UserDetailViewModelFactory
+    class UserDetailViewModelAssistedFactory @Inject constructor(
+        private val db: MyDatabase
+    ) {
+        fun create(userId: Int): UserDetailViewModelFactory {
+            return UserDetailViewModelFactory(db, userId)
         }
-
     }
 }
-
